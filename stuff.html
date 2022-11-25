@@ -12,10 +12,27 @@
       transform:translateX(-50%);
     }
 
+    button {
+      padding:2px;
+      padding-left:5px;
+      padding-right:5px;
+      border-radius:12px;
+      opacity:0.8;
+      background-color:white;
+      margin:10px;
+      font-family:monospace;
+    }
+
+    button:hover{
+      opacity:1;
+    }
+
   </style>
 </head>
 <body onload="loadfnc()">
-  <h1 style="text-align:center;margin:30px;">Tady jsou všechny moje výtvory v Java scriptu</h1>
+  <h1 style="text-align:center;margin:30px;margin-bottom:10px;">Tady jsou všechny moje výtvory v Java scriptu</h1>
+  <button onclick="loadfnc()">změnit barvu</button>
+  <button onclick="rainbow()" id="rainbowBtn">rainbow mode</button>
   <div class="navbar">
     <p style="margin:0;padding:5px;">NAVIGACE</p>
     <br>
@@ -31,6 +48,7 @@
   </div>
 <script>
   let array = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
+  let x = 0
 
   function loadfnc() {
     code1 =  array[~~(Math.random() * array.length)];
@@ -42,6 +60,20 @@
     color = "#" + code1 + code2 + code3 + code4 + code5 + code6 + "40"
     console.log(color)
     document.getElementById("siteholder").style.backgroundColor = color
+  }
+
+  function rainbow() {
+    if (x == 0){
+      loadfnc()
+      rainbowInterval = setInterval(loadfnc, 800);
+      x = 1;
+      document.getElementById("rainbowBtn").style.backgroundColor ="lime"
+    }
+   else if (x == 1){
+     clearInterval(rainbowInterval);
+     x = 0
+     document.getElementById("rainbowBtn").style.backgroundColor ="white"
+    }
   }
 </script>
 </body>
