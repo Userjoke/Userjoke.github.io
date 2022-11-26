@@ -38,7 +38,7 @@
     <br>
     <a href="index.html">HOME</a>
     <a href="art.html">ITS CALLED ART</a>
-    <a>JANČA</a>
+    <a href="auth.html">JANČA</a>
     <a href="stuff.html">JAVA SCRIPT</a>
   </div>
   <div id="siteholder" class="holder">
@@ -47,25 +47,28 @@
       <p style="padding:5px;">základní kalkulačka, prijímá čísla a operátory jako je " + ;- ;* ; / " nic moc k tomu dodat nejde</p>
   </div>
 <script>
-  let array = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
+  let hexarray = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
   let x = 0
+  let i = 0
+  let base = 0
 
   function loadfnc() {
-    code1 =  array[~~(Math.random() * array.length)];
-    code2 = array[~~(Math.random() * array.length)];
-    code3 = array[~~(Math.random() * array.length)];
-    code4 = array[~~(Math.random() * array.length)];
-    code5 = array[~~(Math.random() * array.length)];
-    code6 = array[~~(Math.random() * array.length)];
-    color = "#" + code1 + code2 + code3 + code4 + code5 + code6 + "40"
+    base = hexarray[~~(Math.random() * hexarray.length)]
+    while (i < 5){
+      base =  base + hexarray[~~(Math.random() * hexarray.length)];
+      i++
+    }
+    color = "#" + base + "40"
     console.log(color)
     document.getElementById("siteholder").style.backgroundColor = color
+    i = 0
+    base = hexarray[~~(Math.random() * hexarray.length)];
   }
 
   function rainbow() {
     if (x == 0){
       loadfnc()
-      rainbowInterval = setInterval(loadfnc, 800);
+      rainbowInterval = setInterval(loadfnc, 600);
       x = 1;
       document.getElementById("rainbowBtn").style.backgroundColor ="lime"
     }
