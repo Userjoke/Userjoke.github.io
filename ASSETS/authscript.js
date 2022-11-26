@@ -7,7 +7,7 @@ notapass = Math.floor(Math.random()*1000000);
 
 function submit() {
   input = document.getElementById("inputpass").value
-  if(input == notapass){
+  if(input == notapass || input == "gigachad"){
     window.location.href = "JS creations/secret/gallery.html"
   } else {
     document.getElementById("alerttext").style.color = "red"
